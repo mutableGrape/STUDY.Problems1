@@ -16,7 +16,7 @@ namespace Problems1
             Console.WriteLine("Problems from Dev58/problems/Coding Exercises.docx");
 
             Console.WriteLine("Problem 1: Longest Sequence");
-            Console.WriteLine(LongestSequence(new int[] {1,2,1,1,0,3,1,0,0,2,4,1,0,0,0,0,2,1,0,3,1,0,0,0,6,1,3,0,0,0}));
+            Console.WriteLine(LongestSequence(new int[] { 1, 2, 1, 1, 0, 3, 1, 0, 0, 2, 4, 1, 0, 0, 0, 0, 2, 1, 0, 3, 1, 0, 0, 0, 6, 1, 3, 0, 0, 0 }));
             Console.ReadLine();
 
             Console.WriteLine("Problem 2: Anagrams");
@@ -52,6 +52,13 @@ namespace Problems1
             Console.WriteLine(SumDigits(5000));
             Console.ReadLine();
 
+            Console.WriteLine("Problem 8: TwoSums");
+            Tuple<int, int> answer8 = TwoSums(new List<int>() { 3, 1, 5, 7, 5, 9 }, 10);
+            Console.Write(answer8.Item1);
+            Console.Write(", ");
+            Console.Write(answer8.Item2);
+            Console.ReadLine();
+
         }
         static int LongestSequence(int[] arr)
         {
@@ -80,13 +87,13 @@ namespace Problems1
 
             foreach (string word in words)
             {
-                
+
                 isAnagram = true;
                 if (word.Length == wordLength)
                 {
                     foreach (char i in a)
                     {
-                       
+
                         if (word.IndexOf(i) < 0)
                         {
                             isAnagram = false;
@@ -106,7 +113,7 @@ namespace Problems1
         static void PrintPyramid(int size, bool upside = true)
         {
             // Designed to print pyramid upwards or downwards for convenience of problem 4
-            int start, inrement; 
+            int start, inrement;
             if (upside)
             {
                 start = 1;
@@ -120,7 +127,7 @@ namespace Problems1
 
             for (int i = 0; i < size; i++)
             {
-                if (!upside) { Console.Write(" "); } 
+                if (!upside) { Console.Write(" "); }
                 for (int j = 0; j < (2 * size - start) / 2; j++) { Console.Write(" "); };
                 for (int j = 0; j < start; j++) { Console.Write("*"); }
                 start += inrement;
@@ -131,7 +138,7 @@ namespace Problems1
         static string Reverse(string a)
         {
             string b = "";
-            for (int i = a.Length -1; i >= 0; i--)
+            for (int i = a.Length - 1; i >= 0; i--)
             {
                 b += a[i];
             }
@@ -150,6 +157,21 @@ namespace Problems1
             }
 
             return sum;
+        }
+
+        static Tuple<int, int> TwoSums(List<int> items, int targetSum)
+        {
+            for (int i = 0; i < items.Count - 2; i++)
+            {
+                for (int j = i+1; j < items.Count - 1; j++)
+                {
+                    if (items[i] + items[j] == targetSum)
+                    {
+                        return new Tuple<int, int>(i, j);
+                    }
+                }
+            }
+            return null;
         }
     }
 }
