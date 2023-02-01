@@ -28,6 +28,11 @@ namespace Problems1
             PrintPyramid(5);
             Console.ReadLine();
 
+            Console.WriteLine("Problem 4: Pyramid");
+            PrintPyramid(5);
+            PrintPyramid(4, false);
+            Console.ReadLine();
+
         }
         static int LongestSequence(int[] arr)
         {
@@ -81,6 +86,7 @@ namespace Problems1
 
         static void PrintPyramid(int size, bool upside = true)
         {
+            // Designed to print pyramid upwards or downwards for convenience of problem 4
             int start, inrement; 
             if (upside)
             {
