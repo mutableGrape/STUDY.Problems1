@@ -13,7 +13,7 @@ namespace Problems1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Problems from Dev58/problems/Coding Exercises.docx");
+            Console.WriteLine("Problems from Dev58/problems/Coding Exercises.docx \n");
 
             Console.WriteLine("Problem 1: Longest Sequence");
             Console.WriteLine(LongestSequence(new int[] { 1, 2, 1, 1, 0, 3, 1, 0, 0, 2, 4, 1, 0, 0, 0, 0, 2, 1, 0, 3, 1, 0, 0, 0, 6, 1, 3, 0, 0, 0 }));
@@ -62,6 +62,15 @@ namespace Problems1
             Console.WriteLine("Problem 9: Prime Index");
             Console.WriteLine(PrimeIndex(3));
             Console.WriteLine(PrimeIndex(5));
+            Console.ReadLine();
+
+            Console.WriteLine("Problem 10: Next Prime");
+            Console.WriteLine(NextPrime(6));
+            Console.WriteLine(NextPrime(11));
+            Console.WriteLine(NextPrime(15));
+            Console.ReadLine();
+
+            Console.WriteLine("End.");
             Console.ReadLine();
 
         }
@@ -209,6 +218,25 @@ namespace Problems1
             }
 
             return a;
+        }
+
+        static int NextPrime(int num)
+        {
+            if (num < 2) { return 2; }
+            else if (num < 3) { return 3; }
+            else
+            {
+                int a = num;
+
+                if (a % 2 == 0) { a++; }
+                else { a += 2; }
+
+                while (!(IsPrime(a)))
+                {
+                    a += 2;
+                }
+                return a;
+            }
         }
     }
 }
