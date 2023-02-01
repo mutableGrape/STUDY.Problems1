@@ -37,6 +37,21 @@ namespace Problems1
             Console.WriteLine(Reverse("hello world"));
             Console.ReadLine();
 
+            Console.WriteLine("Problem 6: Palindrome");
+            foreach (string s in new string[] { "madam", "step on no pets", "book" })
+            {
+                Console.Write(s + " is ");
+                if (s != Reverse(s)) { Console.Write("not "); }
+                Console.Write("a palindrome.\n");
+            }
+            Console.ReadLine();
+
+            Console.WriteLine("Problem 7: Sum digits");
+            Console.WriteLine(SumDigits(12));
+            Console.WriteLine(SumDigits(123));
+            Console.WriteLine(SumDigits(5000));
+            Console.ReadLine();
+
         }
         static int LongestSequence(int[] arr)
         {
@@ -121,6 +136,20 @@ namespace Problems1
                 b += a[i];
             }
             return b;
+        }
+
+        static int SumDigits(int num)
+        {
+            int sum = 0;
+            int temp = num;
+
+            while (temp > 0)
+            {
+                sum += temp % 10;
+                temp /= 10;
+            }
+
+            return sum;
         }
     }
 }
