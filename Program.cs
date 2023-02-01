@@ -33,6 +33,10 @@ namespace Problems1
             PrintPyramid(4, false);
             Console.ReadLine();
 
+            Console.WriteLine("Problem 5: Reverse String");
+            Console.WriteLine(Reverse("hello world"));
+            Console.ReadLine();
+
         }
         static int LongestSequence(int[] arr)
         {
@@ -107,6 +111,16 @@ namespace Problems1
                 start += inrement;
                 Console.Write("\n");
             }
+        }
+
+        static string Reverse(string a)
+        {
+            string b = "";
+            for (int i = a.Length -1; i >= 0; i--)
+            {
+                b += a[i];
+            }
+            return b;
         }
     }
 }
