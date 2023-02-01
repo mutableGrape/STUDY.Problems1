@@ -56,7 +56,12 @@ namespace Problems1
             Tuple<int, int> answer8 = TwoSums(new List<int>() { 3, 1, 5, 7, 5, 9 }, 10);
             Console.Write(answer8.Item1);
             Console.Write(", ");
-            Console.Write(answer8.Item2);
+            Console.WriteLine(answer8.Item2);
+            Console.ReadLine();
+
+            Console.WriteLine("Problem 9: Prime Index");
+            Console.WriteLine(PrimeIndex(3));
+            Console.WriteLine(PrimeIndex(5));
             Console.ReadLine();
 
         }
@@ -172,6 +177,38 @@ namespace Problems1
                 }
             }
             return null;
+        }
+
+        static bool IsPrime(int num)
+        {
+            if (num < 2)
+            {
+                return false;
+            } 
+            else
+            {
+                for (int divis = 2; divis*divis <= num; divis++)
+                {
+                    if (num % divis == 0) { return false; }
+                }
+            }
+            return true;
+        }
+
+        static int PrimeIndex(int num)
+        {
+            if (num == 1) { return 2; }
+
+            int primeCounter = 2;
+            int a = 3;
+
+            while (primeCounter < num)
+            {
+                a += 2;
+                if (IsPrime(a)) { primeCounter++; }
+            }
+
+            return a;
         }
     }
 }
