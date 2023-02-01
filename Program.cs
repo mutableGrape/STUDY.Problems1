@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +14,18 @@ namespace Problems1
         static void Main(string[] args)
         {
             Console.WriteLine("Problems from Dev58/problems/Coding Exercises.docx");
+            Console.WriteLine("Helloe".IndexOf("R"));
+
             Console.WriteLine("Problem 1: Longest Sequence");
             Console.WriteLine(LongestSequence(new int[] {1,2,1,1,0,3,1,0,0,2,4,1,0,0,0,0,2,1,0,3,1,0,0,0,6,1,3,0,0,0}));
-
             Console.ReadLine();
-        }
 
+            Console.WriteLine("Problem 2: Anagrams");
+            string[] answer = Anagrams("star", new string[] { "parts", "traps", "arts", "rats", "starts", "tarts", "rat", "art", "tar", "tars", "stars", "stray" });
+            Console.WriteLine(string.Join(", ", answer));
+            Console.ReadLine();
+
+        }
         static int LongestSequence(int[] arr)
         {
             int max = 0;
@@ -34,6 +43,37 @@ namespace Problems1
                 }
             }
             return max;
+        }
+
+        static string[] Anagrams(string a, string[] words)
+        {
+            int wordLength = a.Length;
+            bool isAnagram = true;
+            List<string> ans = new List<string>();
+
+            foreach (string word in words)
+            {
+                
+                isAnagram = true;
+                if (word.Length == wordLength)
+                {
+                    foreach (char i in a)
+                    {
+                       
+                        if (word.IndexOf(i) < 0)
+                        {
+                            isAnagram = false;
+                            break;
+                        }
+                    }
+
+                    if (isAnagram)
+                    {
+                        ans.Add(word);
+                    }
+                }
+            }
+            return ans.ToArray();
         }
     }
 }
