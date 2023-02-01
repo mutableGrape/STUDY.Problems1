@@ -14,7 +14,6 @@ namespace Problems1
         static void Main(string[] args)
         {
             Console.WriteLine("Problems from Dev58/problems/Coding Exercises.docx");
-            Console.WriteLine("Helloe".IndexOf("R"));
 
             Console.WriteLine("Problem 1: Longest Sequence");
             Console.WriteLine(LongestSequence(new int[] {1,2,1,1,0,3,1,0,0,2,4,1,0,0,0,0,2,1,0,3,1,0,0,0,6,1,3,0,0,0}));
@@ -23,6 +22,10 @@ namespace Problems1
             Console.WriteLine("Problem 2: Anagrams");
             string[] answer = Anagrams("star", new string[] { "parts", "traps", "arts", "rats", "starts", "tarts", "rat", "art", "tar", "tars", "stars", "stray" });
             Console.WriteLine(string.Join(", ", answer));
+            Console.ReadLine();
+
+            Console.WriteLine("Problem 3: Pyramid");
+            PrintPyramid(5);
             Console.ReadLine();
 
         }
@@ -74,6 +77,30 @@ namespace Problems1
                 }
             }
             return ans.ToArray();
+        }
+
+        static void PrintPyramid(int size, bool upside = true)
+        {
+            int start, inrement; 
+            if (upside)
+            {
+                start = 1;
+                inrement = 2;
+            }
+            else
+            {
+                start = 2 * size - 1;
+                inrement = -2;
+            }
+
+            for (int i = 0; i < size; i++)
+            {
+                if (!upside) { Console.Write(" "); } 
+                for (int j = 0; j < (2 * size - start) / 2; j++) { Console.Write(" "); };
+                for (int j = 0; j < start; j++) { Console.Write("*"); }
+                start += inrement;
+                Console.Write("\n");
+            }
         }
     }
 }
